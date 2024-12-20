@@ -1,4 +1,4 @@
-export const TestConst = {
+export const testConst = {
   counterBookId: 'counterBookId',
   fixedPositionBookId: 'fixedPositionBookId',
   fixedPositionValue: 100,

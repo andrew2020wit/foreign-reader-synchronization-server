@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { ApiRouteEnum } from '../src/enum/api-route.enum';
-import { TestConst } from '../src/const/test.const';
+import { testConst } from '../src/const/testConst';
 
 describe('Position controller (e2e)', () => {
   let app: INestApplication;
@@ -19,9 +19,9 @@ describe('Position controller (e2e)', () => {
 
   it('fixed-position', () => {
     const req = {
-      userKey: TestConst.testUserKey,
-      bookId: TestConst.fixedPositionBookId,
-      position: TestConst.fixedPositionValue,
+      userKey: testConst.testUserKey,
+      bookId: testConst.fixedPositionBookId,
+      position: testConst.fixedPositionValue,
     };
 
     return request(app.getHttpServer())
@@ -29,15 +29,15 @@ describe('Position controller (e2e)', () => {
       .send(req)
       .expect(201)
       .then((response) => {
-        expect(response.body.position).toEqual(TestConst.fixedPositionValue);
+        expect(response.body.position).toEqual(testConst.fixedPositionValue);
       });
   });
 
   it('wrongTestUserKey', () => {
     const req = {
-      userKey: TestConst.wrongTestUserKey,
-      bookId: TestConst.fixedPositionBookId,
-      position: TestConst.fixedPositionValue,
+      userKey: testConst.wrongTestUserKey,
+      bookId: testConst.fixedPositionBookId,
+      position: testConst.fixedPositionValue,
     };
 
     return request(app.getHttpServer())
@@ -48,8 +48,8 @@ describe('Position controller (e2e)', () => {
 
   it('counterBookId', async function () {
     const req = {
-      userKey: TestConst.testUserKey,
-      bookId: TestConst.counterBookId,
+      userKey: testConst.testUserKey,
+      bookId: testConst.counterBookId,
       position: 0,
     };
 
@@ -76,7 +76,7 @@ describe('Position controller (e2e)', () => {
   it('wrong request: userKey', async function () {
     const req = {
       userKey: '',
-      bookId: TestConst.counterBookId,
+      bookId: testConst.counterBookId,
       position: 0,
     };
 
